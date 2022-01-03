@@ -4,8 +4,8 @@ from django.conf import settings
 class Garment(models.Model):
 	#garment_id=models.IntegerField()
 	# moim zdaniem niepotrzebne, zobacz tabele w xampp
-	user_id = models.ForeignKey(settings.AUTH_USER_MODEL, models.DO_NOTHING) #zmieniłem
-	weather_type_id = models.ForeignKey('WeatherType', models.DO_NOTHING) #zmieniłem
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, models.DO_NOTHING, default=1) #zmieniłem
+	weather_type = models.ForeignKey('WeatherType', models.DO_NOTHING, default=1) #zmieniłem
 
 	cathegory_choice=[
 		('none','None'),
@@ -23,18 +23,18 @@ class Garment(models.Model):
 		blank=False,
 		)
 
-	name=models.CharField(max_length=200, blank=False,)
-	image_address=models.ImageField()
-	preference_index=models.IntegerField()
+	name=models.CharField(max_length=200, blank=False, default='')
+	#image_address=models.ImageField()
+	preference_index=models.IntegerField(default=1)
 
 	class Meta:
-		managed = False
-		db_table = 'c_garment'
+	#	managed = False
+		db_table = 'clothes_garment'
 
 #rozbiłem na mniejsze klasy
 
 class WeatherType(models.Model):
-
+	
 	weather_choice=[
 		('none','None'),
 		('sun','Sun'),
@@ -50,5 +50,6 @@ class WeatherType(models.Model):
 		)
 
 	class Meta:
-		managed = False
+	#	managed = False
 		db_table = 'weather_type'
+	
