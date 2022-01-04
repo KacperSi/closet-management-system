@@ -24,5 +24,5 @@ urlpatterns = [
     path('about/', general_views.about, name='about'),
     path('users/', include('users.urls')),
     path('register/', user_views.register, name='register'),
-
+    path('clothes/', include('clothes.urls')),
 ]
