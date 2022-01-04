@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from rest_framework import generics
+from .models import Garment
+from .serializers import GarmentSerializer
 
-# Create your views here.
+class GarmentList(generics.ListCreateAPIView):
+	queryset=Garment.objects.all()
+	serializer_class=GarmentSerializer

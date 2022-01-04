@@ -1,13 +1,17 @@
 from django.db import models
 from django.conf import settings
+from multiselectfield import MultiSelectField
 
-class Garment(models.Model):
-	#garment_id=models.IntegerField()
-	# moim zdaniem niepotrzebne, zobacz tabele w xampp
-	user = models.ForeignKey(settings.AUTH_USER_MODEL, models.DO_NOTHING, default=1) #zmieniłem
-	weather_type = models.ForeignKey('WeatherType', models.DO_NOTHING, default=1) #zmieniłem
+WEATHER=(
+		('none','None'),
+		('sunny','Sunny'),
+		('cloudy','Cloudy'),
+		('rainy','Rainy'),
+		('snowy','Snowy'),
+		('windy','Windy'),
+	)
 
-	cathegory_choice=[
+CATHEGORY_CHOICE=(
 		('none','None'),
 		('t-shirt','T-Shirt'),
 		('trousers','Trousers'),
@@ -15,16 +19,30 @@ class Garment(models.Model):
 		('jacket','Jacket'),
 		('shorts','Shorts'),
 		('shirt','Shirt'),
-	]
+	)
+
+def user_directory_path(instance, filename):
+  	return 'clothes/{filename}'.format(filename=filename)
+
+
+class Garment(models.Model):
+	#garment_id=models.IntegerField()
+	# moim zdaniem niepotrzebne, zobacz tabele w xampp
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, models.DO_NOTHING, default=1) #zmieniłem
+	#weather_type = models.ForeignKey('WeatherType', models.DO_NOTHING, default=1) #zmieniłem
+
+	weather_type = MultiSelectField(choices=WEATHER)
 	cathegory=models.CharField(
 		max_length=20,
-		choices=cathegory_choice,
+		choices=CATHEGORY_CHOICE,
 		default='none',
 		blank=False,
 		)
 
 	name=models.CharField(max_length=200, blank=False, default='')
-	#image_address=models.ImageField()
+	image=models.ImageField(
+		upload_to=user_directory_path,
+		default='clothes/default.jpg')
 	preference_index=models.IntegerField(default=1)
 
 	class Meta:
@@ -35,21 +53,15 @@ class Garment(models.Model):
 
 class WeatherType(models.Model):
 	
-	weather_choice=[
-		('none','None'),
-		('sun','Sun'),
-		('rain','Rain'),
-		('wind','Wind'),
-		('snow','Snow'),
-	]
-	weather_type=models.CharField(
-		max_length=20,
-		choices=weather_choice,
-		default='none',
-		blank=False,
-		)
+	sunny = models.BooleanField(default=False)
+	cloudy = models.BooleanField(default=False)
+	rainy = models.BooleanField(default=False)
+	snowy = models.BooleanField(default=False)
+	windy = models.BooleanField(default=False)
+
+	temperature = models.IntegerField(default=10)
 
 	class Meta:
 	#	managed = False
 		db_table = 'weather_type'
-	
+
