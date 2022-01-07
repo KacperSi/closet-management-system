@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from general import views as general_views
 from users import views as user_views
+from weather import views as weather_views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -25,6 +26,8 @@ urlpatterns = [
     path('', general_views.home, name='home'),
     path('about/', general_views.about, name='about'),
     path('register/', user_views.register, name='register'),
+    path('weather/',weather_views.weather, name= 'weather'),
+    
 
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
@@ -33,6 +36,8 @@ urlpatterns = [
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
 
     path('users/', include('users.urls')),
+
+    path('weather_api/',weather_views.weatherApi, name= 'weather_api'),
 
     path('clothes/', include('clothes.urls')),
 

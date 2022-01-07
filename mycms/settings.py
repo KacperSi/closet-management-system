@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'rest_auth.registration',
-   # 'multiselectfield'
+    'multiselectfield',
+    'weather.apps.weatherConfig'
 ]
 
 SITE_ID = 1
