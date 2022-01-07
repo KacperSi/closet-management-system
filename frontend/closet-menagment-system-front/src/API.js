@@ -4,7 +4,7 @@ import {
 
 const API = {
     generateClothes: () => {
-        
+        console.log("GENERATED CLOTHES")
     }
 }
 

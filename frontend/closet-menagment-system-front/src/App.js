@@ -1,13 +1,22 @@
 import './App.css';
-import MenuButton from './components/MenuButton';
-import MainHero from './components/MainHero';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Collections from './pages/Collections';
+import MainHero from './pages/MainHero';
+import CreateCollection from './pages/CreateCollection';
 
 function App() {
   return (
-    <div className="App">
-      <MenuButton></MenuButton>
-      <MainHero/>
-    </div>
+    <>
+      <Router>
+        <Navbar/>
+        <Routes>
+          <Route path='/' exact element={ <MainHero/> }/>
+          <Route path='/collections' element={ <Collections/> }/>
+          <Route path='/createcollection' element={ <CreateCollection/> }/>
+        </Routes>
+      </Router>
+    </>
   );
 }
 
