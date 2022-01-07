@@ -26,12 +26,11 @@ def user_directory_path(instance, filename):
 
 
 class Garment(models.Model):
-	#garment_id=models.IntegerField()
-	# moim zdaniem niepotrzebne, zobacz tabele w xampp
-	user = models.ForeignKey(settings.AUTH_USER_MODEL, models.DO_NOTHING, default=1) #zmieniłem
-	#weather_type = models.ForeignKey('WeatherType', models.DO_NOTHING, default=1) #zmieniłem
+
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, models.DO_NOTHING, default=1, verbose_name="User ID")
 
 	weather_type = MultiSelectField(choices=WEATHER)
+
 	cathegory=models.CharField(
 		max_length=20,
 		choices=CATHEGORY_CHOICE,
@@ -39,11 +38,13 @@ class Garment(models.Model):
 		blank=False,
 		)
 
-	name=models.CharField(max_length=200, blank=False, default='')
+	name=models.CharField(max_length=200, blank=False, default='', verbose_name="Cloth name")
 	image=models.ImageField(
 		upload_to=user_directory_path,
 		default='clothes/default.jpg')
-	preference_index=models.IntegerField(default=1)
+	preference_index=models.IntegerField(default=1, verbose_name="Preference")
+	max_temp = models.IntegerField(default=0, verbose_name="Maximum temperature")
+	min_temp = models.IntegerField(default=0, verbose_name="Minimum temperature")
 
 	class Meta:
 	#	managed = False
