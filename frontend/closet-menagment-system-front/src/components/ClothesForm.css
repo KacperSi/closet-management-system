@@ -1,0 +1,24 @@
+.add-clothes-form {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center
+}
+.add-clothes-form label{
+    font-size: 2rem;
+    text-align: left;
+    display: block;
+}
+.add-clothes-form h2 {
+    font-size: 3rem;
+    color: royalblue;
+    margin-bottom: 30px;
+}
+
+.add-clothes-form input, .add-clothes-form textarea, .add-clothes-form select{
+    width: 100%;
+    padding: 6px 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    display: block;
+}

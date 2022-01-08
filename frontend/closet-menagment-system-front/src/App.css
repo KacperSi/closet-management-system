@@ -10,6 +10,7 @@
 .home,
 .mainh-hero,
 .collections,
+.add-clothes,
 .create-collection{
   display: flex;
   height: 90vh;

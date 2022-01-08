@@ -11,6 +11,12 @@ export const SideBarData = [
         cName: 'nav-text'
     },
     {
+        title: 'Add Clothes',
+        path: '/addclothes',
+        icon: <AiIcons.AiFillHome/>,
+        cName: 'nav-text'
+    },
+    {
         title: 'Collections',
         path: '/collections',
         icon: <AiIcons.AiFillHome/>,
