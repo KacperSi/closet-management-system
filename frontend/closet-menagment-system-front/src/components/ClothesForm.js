@@ -2,6 +2,8 @@ import { Button } from '@mui/material';
 import React, { useState } from 'react'
 import './ClothesForm.css';
 import API from '../API';
+import MyDropzone from './MyDropzone';
+
 
 const ClothesForm = () => {
     const [name, setName] = useState('');
@@ -25,12 +27,13 @@ const ClothesForm = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                 />
-                <label>Add image</label>
-                <textarea
+                <label>Add image:</label>
+                <MyDropzone/>
+                {/* <textarea
                     required
                     value={image}
                     onChange={(e) => setImage(e.target.value)}
-                ></textarea>
+                ></textarea> */}
                 <label>Select type:</label>
                 <select
                     value={type}

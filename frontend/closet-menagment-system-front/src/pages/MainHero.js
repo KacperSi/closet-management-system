@@ -6,7 +6,6 @@ const MainHero = () => {
     return (
         <div className='main-hero'>
             <GermentImageContainer></GermentImageContainer>
-            <Button onClick={API.generateClothes}>Generate</Button>
         </div>
     )
 }
