@@ -12,5 +12,5 @@ urlpatterns = [
     #path('all', include(router.urls)),
     #path('all/', users.views.UserViewSet, name='all_users'),
     path('api-auth/',include('rest_framework.urls', namespace='rest_framework')),
-    path('location/', UserLocation.as_view(), name='location'),
+    path('user_info/', UserLocation.as_view(), name='location'),
 ]

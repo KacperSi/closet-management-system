@@ -6,6 +6,10 @@
 rest-auth/registration/
 rest-auth/login
 rest-auth/logout
-rest-auth/user
-weather_api
-clothes_set/		generowanie zestwu ciuchów(jeszcze nie na githubie)
+rest-auth/users/user_info/	zwraca dane usera, robiąc Put można dodać jego lokalizację
+
+weather_api		przy przesłaniu Post nazwy miasta zwróci pogodę w tym mieście
+			dla GET jeśli uzytkownik ma ustawioną lokalizacje to zwraca 
+			pogode w tej lokalizacji a jeśli nie to pogode w Poznaniu
+
+clothes_set/		generowanie zestwu ciuchów
