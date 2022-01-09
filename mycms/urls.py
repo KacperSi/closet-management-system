@@ -41,5 +41,5 @@ urlpatterns = [
     path('clothes_set/',weather_views.clothesSet.as_view(), name= 'find_set_of_clothes'),
 
     path('clothes/', include('clothes.urls')),
-
+    
 ]

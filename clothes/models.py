@@ -13,12 +13,12 @@ WEATHER=(
 
 CATHEGORY_CHOICE=(
 		('none','None'),
-		('t-shirt','T-Shirt'),
+		('hat', 'Hat'),
+		('cover1','Outer layer'),
+		('cover2','Mid layer'),
+		('tshirt','T-Shirt'),
 		('trousers','Trousers'),
-		('hoodie','Hoodie'),
-		('jacket','Jacket'),
-		('shorts','Shorts'),
-		('shirt','Shirt'),
+		('boots', 'Boots'),
 	)
 
 def user_directory_path(instance, filename):
@@ -51,7 +51,7 @@ class Garment(models.Model):
 		db_table = 'clothes_garment'
 
 #rozbiłem na mniejsze klasy
-
+'''
 class WeatherType(models.Model):
 	
 	sunny = models.BooleanField(default=False)
@@ -65,4 +65,4 @@ class WeatherType(models.Model):
 	class Meta:
 	#	managed = False
 		db_table = 'weather_type'
-
+'''

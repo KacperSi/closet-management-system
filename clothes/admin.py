@@ -1,5 +1,4 @@
 from django.contrib import admin
-from .models import Garment, WeatherType
+from .models import Garment
 
 admin.site.register(Garment)
-admin.site.register(WeatherType)
