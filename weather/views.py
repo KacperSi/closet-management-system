@@ -37,7 +37,10 @@ def weatherApi(request):
         else:
             city = 'Poznań'
     else:
-        city = 'Poznań'
+        if request.user.location!="":
+            city = request.user.location
+        else:
+            city = 'Poznań'
     appid='e3ba2b287dabacd8d9d5acf1ee02a718'
     URL='http://api.openweathermap.org/data/2.5/weather'
     PARAMS={'q':city,'appid':appid,'units':'metric'}
