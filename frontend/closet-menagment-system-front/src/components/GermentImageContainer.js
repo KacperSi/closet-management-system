@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import GermentImage from './GermentImage';
 import './GermentImageContainer.css';
 import { Button } from '@mui/material';
 import API from '../API';
 
-const GermentImageContainer = () => {
+const GermentImageContainer = ({ clothes }) => {
+    console.log(clothes)
     return (
         <div className='germent-image-container'>
-            <GermentImage image="images/hat.jpeg" type="hat"/>
-            <GermentImage image="images/tshirt.jpeg" type="tshirt"/>
-            <GermentImage image="images/trousers.jpeg" type="trousers"/>
-            <GermentImage image="images/shoes.jpeg" type="shoes"/>
-            <Button onClick={API.generateClothes}>Generate</Button>
+            <GermentImage image={clothes.hat}/>
+            <GermentImage image={clothes.tshirt}/>
+            <GermentImage image={clothes.trousers}/>
+            <GermentImage image={clothes.shoes}/>            
         </div>
     )
 }

@@ -11,5 +11,6 @@
     height: 20vh;
     overflow: hidden;
     border: solid;
+    border-radius: 10px;
     border-color: royalblue;
 }
