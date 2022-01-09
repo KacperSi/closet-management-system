@@ -38,6 +38,7 @@ urlpatterns = [
     path('users/', include('users.urls')),
 
     path('weather_api/',weather_views.weatherApi, name= 'weather_api'),
+    path('clothes_set/',weather_views.clothesSet.as_view(), name= 'find_set_of_clothes'),
 
     path('clothes/', include('clothes.urls')),
 
