@@ -40,5 +40,5 @@ urlpatterns = [
     path('weather_api/',weather_views.weatherApi, name= 'weather_api'),
 
     path('clothes/', include('clothes.urls')),
-
+    
 ]

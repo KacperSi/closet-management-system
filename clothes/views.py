@@ -30,3 +30,11 @@ class GarmentDetail(generics.RetrieveUpdateDestroyAPIView, UserObjectsReadWriteP
 	permission_classes = [UserObjectsReadWritePermission]
 	queryset=Garment.objects.all()
 	serializer_class=GarmentSerializer
+
+
+class CathegoryList(generics.ListAPIView):
+	permission_classes = [IsAuthenticated]
+	serializer_class = GarmentSerializer
+
+	def get_queryset(self):
+		return Garment.objects.all().filter(user=self.request.user, cathegory=self.kwargs['cathegory'])
