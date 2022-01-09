@@ -1,6 +1,6 @@
 .slider {
     position: relative;
-    height: 80vh;
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,7 +14,7 @@
 .right-arrow {
     position: absolute;
     top: 50%;
-    right: 32px;
+    right: 2px;
     font-size: 3rem;
     color: royalblue;
     z-index: 10;
@@ -24,7 +24,7 @@
 .left-arrow {
     position: absolute;
     top: 50%;
-    left: 32px;
+    left: 2px;
     font-size: 3rem;
     color: royalblue;
     z-index: 10;
@@ -33,10 +33,12 @@
 }
 
 .slide {
+    height: 80vh;
     opacity: 0;
     transition-duration: 0.5s;
 }
 .slide.active {
+    height: 80vh;
     opacity: 1;
     transition-duration: 0.5s;
     transform: scale(1.08);

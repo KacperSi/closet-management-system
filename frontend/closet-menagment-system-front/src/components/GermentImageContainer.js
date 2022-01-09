@@ -5,7 +5,6 @@ import { Button } from '@mui/material';
 import API from '../API';
 
 const GermentImageContainer = ({ clothes }) => {
-    console.log(clothes)
     return (
         <div className='germent-image-container'>
             <GermentImage image={clothes.hat}/>

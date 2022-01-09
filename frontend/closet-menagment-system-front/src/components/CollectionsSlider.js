@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa'
 import { CollectionsSliderData } from './CollectionsSliderData'
 import './CollectionsSlider.css'
+import GermentImage from './GermentImage'
+import GermentImageContainer from './GermentImageContainer'
 
 const CollectionsSlider = ({ slides }) => {
     const [current, setCurrent] = useState(0);
@@ -25,11 +27,12 @@ const CollectionsSlider = ({ slides }) => {
             {CollectionsSliderData.map((slide, index) => {
                 return (
                     <div className={index === current ? 'slide active' : 'slide'} key={index}>
-                        {index === current && (<img src={slide.image} alt='an image' className='image'/>)}
+                        {index === current && (<GermentImageContainer clothes={slides[current]}/>)}
                     </div>
                 );
             })}
         </section>
+        // <img src={slide.image} alt='an image' className='image'/>
     )
 }
 
