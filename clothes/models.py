@@ -50,19 +50,15 @@ class Garment(models.Model):
 	#	managed = False
 		db_table = 'clothes_garment'
 
-#rozbiłem na mniejsze klasy
-'''
-class WeatherType(models.Model):
-	
-	sunny = models.BooleanField(default=False)
-	cloudy = models.BooleanField(default=False)
-	rainy = models.BooleanField(default=False)
-	snowy = models.BooleanField(default=False)
-	windy = models.BooleanField(default=False)
 
-	temperature = models.IntegerField(default=10)
+	def __str__(self):
+		return self.name
 
-	class Meta:
-	#	managed = False
-		db_table = 'weather_type'
-'''
+class Collection(models.Model):
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, models.DO_NOTHING, default=1, verbose_name="User ID")
+	name = models.CharField(max_length=200, blank=False, default='', verbose_name="Collection name")
+	clothes = models.ManyToManyField(Garment)
+
+
+	def __str__(self):
+		return self.name

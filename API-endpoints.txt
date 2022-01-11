@@ -1,7 +1,9 @@
 /clothes/
-	/list	=> GET - zwraca wszystkie ciuchy zalogowanego użytkownika, POST - dodaje jednego ciucha
-	/<int>	=> GET, PUT, PATCH, DELETE (ogólnie dostęp do ciuchów zalogowanego użytkownika, tutaj za pomocą PATCH można updateować kolumnę preference_index w DB)
-	/list/<cathegory> => GET - zwraca listę ciuchów z kategorii podanej w zmiennej <cathegory>
+	/list			=> GET - zwraca wszystkie ciuchy zalogowanego użytkownika, POST - dodaje jednego ciucha
+	/<int>			=> GET, PUT, PATCH, DELETE (ogólnie dostęp do ciuchów zalogowanego użytkownika, tutaj za pomocą PATCH można updateować kolumnę preference_index w DB)
+	/list/<cathegory> 	=> GET - zwraca listę ciuchów z kategorii podanej w zmiennej <cathegory>
+	/collection 		=> GET, POST - zwraca wszystkie kolekcje danego użytkownika i pozwala tworzyć nowe
+	/collection/<int> 	=> GET, PUT, PATCH, DELETE zwraca kolekcję z danym ID
 
 rest-auth/registration/
 rest-auth/login
