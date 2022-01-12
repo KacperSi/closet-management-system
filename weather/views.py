@@ -63,13 +63,13 @@ class clothesSet(generics.ListAPIView):
     serializer_class=GarmentSerializer
 
     def get_queryset(self):
-        tshirt = checkGarment("hat")
-        trousers = checkGarment("cover1")
-        hoodie = checkGarment("cover2")
-        jacket = checkGarment("tshirt")
-        shorts = checkGarment("trousers")
-        shirt = checkGarment("boots")
-        list_of_ids=[tshirt.id,trousers.id,hoodie.id,jacket.id,shorts.id,shirt.id]
+        hat = checkGarment("hat")
+        cover1 = checkGarment("cover1")
+        cover2 = checkGarment("cover2")
+        tshirt = checkGarment("tshirt")
+        trousers = checkGarment("trousers")
+        boots = checkGarment("boots")
+        list_of_ids=[hat.id,cover1.id,cover2.id,tshirt.id,trousers.id,boots.id]
         generated = models.Garment.objects.filter(id__in=list_of_ids)
         return generated
 
