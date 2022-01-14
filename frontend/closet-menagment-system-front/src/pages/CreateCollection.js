@@ -1,9 +1,11 @@
 import React from 'react'
+import ClothesImagesSlider from '../components/ClothesImagesSlider'
+import { SingleClothes } from '../components/SingleClothes'
 
 const CreateCollection = () => {
     return (
         <div className='create-collection'>
-            <h1>Create Collections</h1>
+            <ClothesImagesSlider clothes={SingleClothes}/>
         </div>
     )
 }

@@ -1,0 +1,33 @@
+.create-collection-container{
+    height: 80vh;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.clothes-image-slider {
+    width: 80vw;
+}
+
+.clothes-image-list {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: space-around;
+}
+
+.germent-image{
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border: solid;
+    border-radius: 10px;
+    border-color: royalblue;
+}
+
+.clothes-image-drop {
+    width: 600px;
+    height: 600px;
+    background-color: silver;
+}

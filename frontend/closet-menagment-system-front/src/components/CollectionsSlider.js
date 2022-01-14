@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa'
-import { CollectionsSliderData } from './CollectionsSliderData'
 import './CollectionsSlider.css'
 import GermentImage from './GermentImage'
 import GermentImageContainer from './GermentImageContainer'
@@ -24,11 +23,11 @@ const CollectionsSlider = ({ slides }) => {
             {/* <h1>{current}</h1> */}
             <FaArrowAltCircleLeft className='left-arrow' onClick={prevSlide}/>
             <FaArrowAltCircleRight className='right-arrow' onClick={nextSlide}/>
-            {CollectionsSliderData.map((slide, index) => {
+            {slides.map((slide, index) => {
                 return (
                     <div className={index === current ? 'slide active' : 'slide'} key={index}>
                         {index === current && (<GermentImageContainer clothes={slides[current]}/>)}
-                    </div>
+                    </div>    
                 );
             })}
         </section>
