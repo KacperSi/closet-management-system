@@ -8,7 +8,7 @@
 }
 
 .home,
-.mainh-hero,
+.main-hero,
 .collections,
 .add-clothes,
 .create-collection{
@@ -17,4 +17,8 @@
   align-items: center;
   justify-content: center;
   font-size: 3rem;
+}
+
+.main-hero{
+  flex-direction: column;
 }

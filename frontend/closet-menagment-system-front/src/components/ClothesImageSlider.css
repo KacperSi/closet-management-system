@@ -17,15 +17,6 @@
     justify-content: space-around;
 }
 
-.germent-image{
-    width: 100px;
-    height: 100px;
-    overflow: hidden;
-    border: solid;
-    border-radius: 10px;
-    border-color: royalblue;
-}
-
 .clothes-image-drop {
     width: 600px;
     height: 600px;
