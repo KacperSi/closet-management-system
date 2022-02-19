@@ -1,0 +1,27 @@
+.create-collection-container{
+    height: 80vh;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.clothes-image-slider {
+    width: 80vw;
+}
+
+.clothes-image-list {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: space-around;
+}
+
+.clothes-image-drop {
+    width: 200px;
+    height: 200px;
+    /* background-color: silver; */
+    border-style: solid;
+    border-width: 1px;
+    border-color: red;
+}
