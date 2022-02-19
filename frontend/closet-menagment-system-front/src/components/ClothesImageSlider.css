@@ -18,7 +18,10 @@
 }
 
 .clothes-image-drop {
-    width: 600px;
-    height: 600px;
-    background-color: silver;
+    width: 200px;
+    height: 200px;
+    /* background-color: silver; */
+    border-style: solid;
+    border-width: 1px;
+    border-color: red;
 }

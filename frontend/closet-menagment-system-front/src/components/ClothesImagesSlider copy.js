@@ -37,18 +37,23 @@ const ClothesImagesSlider = ({ clothes }) => {
         const { source, destination } = result;
 
         if (source.droppableId === 'clothes-slider' && source.droppableId !== destination.droppableId){
-            console.log("HERE")
+            console.log("comes from slider")
+            console.log(source);
+            console.log(destination);
+            // const sourceColumn = columns[source.droppableId];
+            // console.log(sourceColumn)
             const destColumn = columns[destination.droppableId];
+            console.log(destColumn)
             // const sourceItems = [sourceColumn.items];
             const destItems = [...destColumn.items];
             const pieces = Array.from(items);
             const [changedDestination] = pieces.splice(source.index, 1);
             destItems.splice(destination.index, 0, changedDestination);
-            console.log(destItems)
+            console.log(destItems);
+            console.log(changedDestination)
             setItems(pieces);
-            console.log(items)
-            console.log(columns)
             setColumns({...columns, [destination.droppableId]: {...destColumn, items: destItems}})
+            console.log(columns)
         }
         else if (source.droppableId !== destination.droppableId) {
             console.log(source);
@@ -74,8 +79,12 @@ const ClothesImagesSlider = ({ clothes }) => {
         }
         
     }
+    console.log(current)
+
     return (
             <div className='clothes-image-slider'> 
+            {/* <FaArrowAltCircleLeft className='left-arrow' onClick={prevSlide}/>
+            <FaArrowAltCircleRight className='right-arrow' onClick={nextSlide}/> */}
             <DragDropContext onDragEnd={result => handleOnDragEnd(result, columns, setColumns)}>
                 <Droppable droppableId='clothes-slider' direction="horizontal">
                     {(provided) => (
@@ -104,21 +113,17 @@ const ClothesImagesSlider = ({ clothes }) => {
                             {(provided) => (
                                 <div className='clothes-image-drop' {...provided.droppableProps} ref={provided.innerRef}>
                                     {column.items.map((item, index) => {
+                                        return(
                                         <Draggable key={item.id} draggableId={item.id} index={index}>
                                             {(provided) => {
-                                                console.log(item)
-                                                if(item==[]){
-                                                    return(<div>EMPTY</div>)
-                                                }else{
                                                 return(
                                                     <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                                                        <div className='drag-item' >
-                                                            <GermentImage image={item.img} type={item.id}/>
-                                                        </div>
+                                                        {item.img}
                                                     </div>
-                                                )}
-                                            }}
+                                                )
+                                            }};
                                         </Draggable>
+                                        );
                                     })}
                                     {provided.placeholder}
                                 </div>
