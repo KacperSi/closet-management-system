@@ -27,5 +27,11 @@ export const SideBarData = [
         path: '/createcollection',
         icon: <AiIcons.AiFillHome/>,
         cName: 'nav-text'
+    },
+    {
+        title: 'Settings',
+        path: '/usersettings',
+        icon: <AiIcons.AiFillHome/>,
+        cName: 'nav-text'
     }
 ]

@@ -11,7 +11,8 @@
 .main-hero,
 .collections,
 .add-clothes,
-.create-collection{
+.create-collection,
+.user-settings{
   display: flex;
   height: 90vh;
   align-items: center;

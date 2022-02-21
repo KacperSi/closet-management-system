@@ -12,11 +12,15 @@ const MainHero = () => {
     const changeId = () => {
         setId(id >= length - 1 ? 0 : id + 1) 
     }
+    const generateClothes = async () =>{
+        const res = await API.generateClothes();
+        console.log(res);
+    }
     console.log(id)
     return (
         <div className='main-hero'>
             <GermentImageContainer clothes={TestClothes[id]}/>
-            <Button onClick={changeId}>Generate</Button>
+            <Button onClick={generateClothes}>Generate</Button>
         </div>
     )
 }

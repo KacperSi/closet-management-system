@@ -122,9 +122,7 @@ const ClothesImagesSlider = ({ clothes }) => {
                                     })}
                                     {provided.placeholder}
                                 </div>
-                                
-                            )}
-                            
+                            )}  
                         </Droppable>
                     )
                 })}

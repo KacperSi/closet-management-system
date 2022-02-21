@@ -5,6 +5,7 @@ import Collections from './pages/Collections';
 import MainHero from './pages/MainHero';
 import CreateCollection from './pages/CreateCollection';
 import AddClothes from './pages/AddClothes';
+import UserSettings from './pages/UserSettings';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/addclothes' element={ <AddClothes/> }/>
           <Route path='/collections' element={ <Collections/> }/>
           <Route path='/createcollection' element={ <CreateCollection/> }/>
+          <Route path='/usersettings' element={ <UserSettings/> }/>
         </Routes>
       </Router>
     </>
