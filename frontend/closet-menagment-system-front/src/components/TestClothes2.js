@@ -1,20 +1,8 @@
 import React from "react";
 
-export const TestClothes = [
+export const TestClothes2 = [
     [
-        {
-            "id": 1,
-            "user": 2,
-            "weather_type": [
-                "cloudy"
-            ],
-            "cathegory": "hat",
-            "name": "hat1",
-            "image": "images/hat.jpeg",
-            "preference_index": 0,
-            "max_temp": 10,
-            "min_temp": -10
-        },
+        
         {
             "id": 2,
             "user": 2,
@@ -37,19 +25,6 @@ export const TestClothes = [
             "cathegory": "cover1",
             "name": "hoodie",
             "image": "images/hoodie.jpeg",
-            "preference_index": 0,
-            "max_temp": 10,
-            "min_temp": -10
-        },
-        {
-            "id": 4,
-            "user": 2,
-            "weather_type": [
-                "sunny"
-            ],
-            "cathegory": "cover2",
-            "name": "jacket",
-            "image": "images/jacket.jpeg",
             "preference_index": 0,
             "max_temp": 10,
             "min_temp": -10
@@ -122,20 +97,46 @@ export const TestClothes = [
             "min_temp": -10
         },
         {
-            "id": 12,
+            "id": 6,
             "user": 2,
             "weather_type": [
                 "sunny"
             ],
             "cathegory": "boots",
-            "name": "shoes2",
-            "image": "images/shoes2.jpeg",
+            "name": "shoes1",
+            "image": "images/shoes.jpeg",
             "preference_index": 0,
             "max_temp": 10,
             "min_temp": -10
         }
     ],
     [
+        {
+            "id": 1,
+            "user": 2,
+            "weather_type": [
+                "cloudy"
+            ],
+            "cathegory": "hat",
+            "name": "hat1",
+            "image": "images/hat.jpeg",
+            "preference_index": 0,
+            "max_temp": 10,
+            "min_temp": -10
+        },
+        {
+            "id": 4,
+            "user": 2,
+            "weather_type": [
+                "sunny"
+            ],
+            "cathegory": "cover2",
+            "name": "jacket",
+            "image": "images/jacket.jpeg",
+            "preference_index": 0,
+            "max_temp": 10,
+            "min_temp": -10
+        },
         {
             "id": 13,
             "user": 2,

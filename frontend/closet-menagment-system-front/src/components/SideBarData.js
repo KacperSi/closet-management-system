@@ -13,25 +13,31 @@ export const SideBarData = [
     {
         title: 'Add Clothes',
         path: '/addclothes',
-        icon: <AiIcons.AiFillHome/>,
+        icon: <FaIcons.FaTshirt/>,
         cName: 'nav-text'
     },
     {
         title: 'Collections',
         path: '/collections',
-        icon: <AiIcons.AiFillHome/>,
+        icon: <FaIcons.FaTshirt/>,
         cName: 'nav-text'
     },
     {
         title: 'Create Collections',
         path: '/createcollection',
-        icon: <AiIcons.AiFillHome/>,
+        icon: <FaIcons.FaTshirt/>,
         cName: 'nav-text'
     },
     {
         title: 'Settings',
         path: '/usersettings',
-        icon: <AiIcons.AiFillHome/>,
+        icon: <AiIcons.AiFillSetting/>,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Login',
+        path: '/loginpage',
+        icon: <AiIcons.AiOutlineLogin/>,
         cName: 'nav-text'
     }
 ]

@@ -1,133 +1,158 @@
 import React, {useState} from 'react'
-
 import GermentImage from './GermentImage'
 import './ClothesImageSlider.css'
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import uuid from 'react-uuid';
+import { Button } from '@mui/material';
 
 const ClothesImagesSlider = ({ clothes }) => {
+    const [name, setName] = useState('');
+    const [hat, setHat] = useState('');
+    const [tshirt, setTshirt] = useState('');
+    const [trousers, setTrousers] = useState('');
+    const [cover1, setCover1] = useState('');
+    const [cover2, setCover2] = useState('');
+    const [boots, setBoots] = useState('');
+    const [garment, setGarment] = useState(clothes[0]);
 
-    const columnsFromBackend = {
-        [uuid()]: {
-          name: "clothes-placeholder-hat",
-          items: []
-        },
-        [uuid()]: {
-          name: "clothes-placeholder-tshirt",
-          items: []
-        }
-      };
-
-    const [items, setItems] = useState(clothes)
-    const [current, setCurrent] = useState(0);
-    const [columns, setColumns] = useState(columnsFromBackend);
-    const length = clothes.length
-
-
-    const nextSlide = () => {
-        setCurrent(current === length - 3 ? 0 : current + 1);
-    }
-    const prevSlide = () => {
-        setCurrent(current === 0 ? length - 3 : current - 1);
+    const submit = () => {
+        console.log(tshirt);
     }
     
-    const handleOnDragEnd = (result, columns, setColumns) => {
-        if (!result.destination) return;
-        const { source, destination } = result;
-
-        if (source.droppableId === 'clothes-slider' && source.droppableId !== destination.droppableId){
-            console.log("HERE")
-            const destColumn = columns[destination.droppableId];
-            // const sourceItems = [sourceColumn.items];
-            const destItems = [...destColumn.items];
-            const pieces = Array.from(items);
-            const [changedDestination] = pieces.splice(source.index, 1);
-            destItems.splice(destination.index, 0, changedDestination);
-            console.log(destItems)
-            setItems(pieces);
-            console.log(items)
-            console.log(columns)
-            setColumns({...columns, [destination.droppableId]: {...destColumn, items: destItems}})
+    const handleChange = (e) => {
+        console.log(e.target.value);
+        const foundGarment = clothes.find(c => c.name === e.target.value);
+        console.log(foundGarment);
+        if(foundGarment.cathegory === 'hat'){
+            setHat(foundGarment);
+            setGarment(foundGarment);
+        }else if(foundGarment.cathegory === 'tshirt'){
+            setTshirt(foundGarment);
+            setGarment(foundGarment);
+        }else if(foundGarment.cathegory === 'trousers'){
+            setTrousers(foundGarment);
+            setGarment(foundGarment);
+        }else if(foundGarment.cathegory === 'cover1'){
+            setCover1(foundGarment);
+            setGarment(foundGarment);
         }
-        else if (source.droppableId !== destination.droppableId) {
-            console.log(source);
-            console.log(destination);
-            const sourceColumn = columns[source.droppableId];
-            console.log(sourceColumn)
-            const destColumn = columns[destination.droppableId];
-            console.log(destColumn)
-            const sourceItems = [sourceColumn.items];
-            const destItems = [...destColumn.items];
-            const pieces = Array.from(items);
-            const [changedDestination] = pieces.splice(source.index, 1);
-            destItems.splice(destination.index, 0, changedDestination);
-            setColumns({...columns, [source.droppableId]: {...sourceColumn, items: pieces},
-                 [destination.droppableId]: {...destColumn, items: destItems}})
-                 console.log(columns)
+        else if(foundGarment.cathegory === 'cover2'){
+            setCover2(foundGarment);
+            setGarment(foundGarment);
+        }else if(foundGarment.cathegory === 'boots'){
+            setBoots(foundGarment);
+            setGarment(foundGarment);
         }
-        else {
-            const pieces = Array.from(items);
-            const [reorderPieces] = pieces.splice(source.index, 1);
-            pieces.splice(destination.index, 0, reorderPieces);
-            setItems(pieces);
-        }
-        
     }
     return (
-            <div className='clothes-image-slider'> 
-            <DragDropContext onDragEnd={result => handleOnDragEnd(result, columns, setColumns)}>
-                <Droppable droppableId='clothes-slider' direction="horizontal">
-                    {(provided) => (
-                        <ul className='clothes-image-list' {...provided.droppableProps} ref={provided.innerRef}>
-                            {items.map((piece, index) => {
+        <div className='add-collection-container'>
+            <div className='add-clothes-form'>
+                <h2>Create collection</h2>
+                <form>
+                    <label>Name: </label>
+                    <input 
+                        type='text' 
+                        required 
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                    <label>Select hat:</label>
+                    <select
+                        value={hat.name}
+                        onChange={handleChange}>
+                        <option value='none'>None</option>
+                        {clothes.map((c, index) => {
+                            if (c.cathegory == 'hat'){
                                 return(
-                                    <Draggable key={piece.id} draggableId={piece.id} index={index}>
-                                        {(provided) => (
-                                            <li {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                                                <div className='drag-item'>
-                                                    <GermentImage image={piece.img} type={piece.id}/>
-                                                </div>
-                                                
-                                            </li>
-                                        )}
-                                    </Draggable>
+                                    <option value={c.name} key={index}>{c.name}</option>
                                 )
-                            })}
-                            {provided.placeholder}
-                        </ul>
-                    )}
-                </Droppable>
-                {Object.entries(columns).map(([columnId, column], index) => {
-                    return(
-                        <Droppable droppableId={columnId} key={columnId} direction="horizontal">
-                            {(provided) => (
-                                <div className='clothes-image-drop' {...provided.droppableProps} ref={provided.innerRef}>
-                                    {column.items.map((item, index) => {
-                                        <Draggable key={item.id} draggableId={item.id} index={index}>
-                                            {(provided) => {
-                                                console.log(item)
-                                                if(item==[]){
-                                                    return(<div>EMPTY</div>)
-                                                }else{
-                                                return(
-                                                    <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                                                        <div className='drag-item' >
-                                                            <GermentImage image={item.img} type={item.id}/>
-                                                        </div>
-                                                    </div>
-                                                )}
-                                            }}
-                                        </Draggable>
-                                    })}
-                                    {provided.placeholder}
-                                </div>
-                            )}  
-                        </Droppable>
-                    )
-                })}
-            </DragDropContext>
+                            }else{
+                                return('')
+                            }
+                            
+                        })}
+                    </select>
+                    <label>Select tshirt:</label>
+                    <select
+                        value={tshirt.name}
+                        onChange={handleChange}>
+                        <option value='none'>None</option>
+                        {clothes.map((c, index) => {
+                            if (c.cathegory == 'tshirt'){
+                                return(
+                                    <option value={c.name} key={index}>{c.name}</option>
+                                )
+                            }else{
+                                return('')
+                            }
+                        })}
+                    </select>
+                    <label>Select trousers:</label>
+                    <select
+                        value={trousers.name}
+                        onChange={handleChange}>
+                        <option value='none'>None</option>
+                        {clothes.map((c, index) => {
+                            if (c.cathegory == 'trousers'){
+                                return(
+                                    <option value={c.name} key={index}>{c.name}</option>
+                                )
+                            }else{
+                                return('')
+                            }
+                        })}
+                    </select>
+                    <label>Select hoodie:</label>
+                    <select
+                        value={cover1.name}
+                        onChange={handleChange}>
+                        <option value='none'>None</option>
+                        {clothes.map((c, index) => {
+                            if (c.cathegory == 'cover1'){
+                                return(
+                                    <option value={c.name} key={index}>{c.name}</option>
+                                )
+                            }else{
+                                return('')
+                            }
+                        })}
+                    </select>
+                    <label>Select jacket:</label>
+                    <select
+                        value={cover2.name}
+                        onChange={handleChange}>
+                        <option value='none'>None</option>
+                        {clothes.map((c, index) => {
+                            if (c.cathegory == 'cover2'){
+                                return(
+                                    <option value={c.name} key={index}>{c.name}</option>
+                                )
+                            }else{
+                                return('')
+                            }
+                        })}
+                    </select>
+                    <label>Select boots:</label>
+                    <select
+                        value={boots.name}
+                        onChange={handleChange}>
+                        <option value='none'>None</option>
+                        {clothes.map((c, index) => {
+                            if (c.cathegory == 'boots'){
+                                return(
+                                    <option value={c.name} key={index}>{c.name}</option>
+                                )
+                            }else{
+                                return('')
+                            }
+                        })}
+                    </select>
+                    <Button onClick={submit}>Create</Button>
+                </form>
             </div>
+            <div>
+                <GermentImage image={garment.image} category={garment.cathegory}/>
+            </div>
+        </div>
     )
 }
 

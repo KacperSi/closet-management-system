@@ -1,11 +1,11 @@
 import React from 'react'
 import ClothesImagesSlider from '../components/ClothesImagesSlider'
-import { SingleClothes } from '../components/SingleClothes'
+import { TestClothes3 } from '../components/TestClothes3'
 
 const CreateCollection = () => {
     return (
         <div className='create-collection'>
-            <ClothesImagesSlider clothes={SingleClothes}/>
+            <ClothesImagesSlider clothes={TestClothes3}/>
         </div>
     )
 }

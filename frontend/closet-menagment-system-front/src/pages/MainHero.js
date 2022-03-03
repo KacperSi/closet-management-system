@@ -14,6 +14,7 @@ const MainHero = () => {
     }
     const generateClothes = async () =>{
         const res = await API.generateClothes();
+        changeId()
         console.log(res);
     }
     console.log(id)

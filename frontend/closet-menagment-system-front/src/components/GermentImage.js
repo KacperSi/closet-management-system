@@ -1,9 +1,9 @@
 import React from 'react'
 
-const GermentImage = ({ image, type}) => {
+const GermentImage = ({ image, category}) => {
     return (
         <div className='germent-image'>
-            <img src={image} alt={`A ${type}`}></img>
+            <img src={image} alt={`A ${category}`}></img>
         </div>
     )
 }

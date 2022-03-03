@@ -14,7 +14,7 @@
 .right-arrow {
     position: absolute;
     top: 50%;
-    left: 300px;
+    left: 500px;
     font-size: 3rem;
     color: royalblue;
     z-index: 10;
@@ -24,7 +24,7 @@
 .left-arrow {
     position: absolute;
     top: 50%;
-    right: 300px;
+    right: 500px;
     font-size: 3rem;
     color: royalblue;
     z-index: 10;

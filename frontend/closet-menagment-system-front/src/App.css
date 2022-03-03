@@ -12,7 +12,8 @@
 .collections,
 .add-clothes,
 .create-collection,
-.user-settings{
+.user-settings,
+.login-page{
   display: flex;
   height: 90vh;
   align-items: center;

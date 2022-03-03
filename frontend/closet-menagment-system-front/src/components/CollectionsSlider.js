@@ -20,7 +20,6 @@ const CollectionsSlider = ({ slides }) => {
 
     return (
         <section className='slider'>
-            {/* <h1>{current}</h1> */}
             <FaArrowAltCircleLeft className='left-arrow' onClick={prevSlide}/>
             <FaArrowAltCircleRight className='right-arrow' onClick={nextSlide}/>
             {slides.map((slide, index) => {
@@ -31,7 +30,6 @@ const CollectionsSlider = ({ slides }) => {
                 );
             })}
         </section>
-        // <img src={slide.image} alt='an image' className='image'/>
     )
 }
 
