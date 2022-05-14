@@ -10,9 +10,10 @@ export const LoginRegister = () => {
   const [emailText, setEmailText] = useState("");
   const [passwordText, setPasswordText] = useState("");
   const [cpasswordText, setcPasswordText] = useState("");
+  const [location, setLocation] = useState("");
   const [registerState, setRegisterState] = useState(false);
   const [alert, setAlert] = useState(false);
-  const [alertState, setAletState] = useState(false);
+  const [alertState, setAlertState] = useState(false);
   const [passwordAlert, setPasswordAlert] = useState(false);
 
   const handleChange = (e) => {
@@ -24,37 +25,58 @@ export const LoginRegister = () => {
       setEmailText(e.target.value);
     } else if (e.target.id === "cpassword") {
       setcPasswordText(e.target.value);
+    } else if (e.target.id === "location") {
+      setLocation(e.target.value);
     }
   };
 
   const login = async () => {
-    console.log(loginText, passwordText);
     const res = await API.login(loginText, passwordText);
     if (res) {
       setLoginText("");
       setPasswordText("");
-      setAletState(true);
+
+      setAlertState(true);
       setAlert(true);
     } else {
-      console.log("sth went wrong");
       setLoginText("");
       setPasswordText("");
-      setAletState(false);
+      setAlertState(false);
       setAlert(true);
     }
   };
 
   const handleRegistration = () => {
     registerState ? setRegisterState(false) : setRegisterState(true);
-    console.log("REG");
   };
 
-  const register = () => {
+  const register = async () => {
     if (passwordText === cpasswordText) {
-      console.log(loginText, passwordText, emailText, cpasswordText);
-      setPasswordAlert(false);
+      const res = await API.register(
+        loginText,
+        passwordText,
+        location,
+        emailText,
+        cpasswordText
+      );
+
+      if (res) {
+        setLoginText("");
+        setPasswordText("");
+        setcPasswordText("");
+        setLocation("");
+        setAlertState(true);
+        setAlert(true);
+      } else {
+        setLoginText("");
+        setPasswordText("");
+        setcPasswordText("");
+        setLocation("");
+        setAlertState(false);
+        setAlert(true);
+      }
     } else {
-      setPasswordAlert(true);
+      return;
     }
   };
 
@@ -62,9 +84,12 @@ export const LoginRegister = () => {
     <div>
       {registerState ? (
         <Stack spacing={2}>
-          {alert ? <Alert severity="error">Unable to register</Alert> : ""}
-          {passwordAlert ? (
-            <Alert severity="error">Passwords are different</Alert>
+          {alert ? (
+            alertState ? (
+              <Alert severity="success">Registered successful</Alert>
+            ) : (
+              <Alert severity="error">Unable to register</Alert>
+            )
           ) : (
             ""
           )}
@@ -76,13 +101,6 @@ export const LoginRegister = () => {
             value={loginText}
           />
           <TextField
-            id="email"
-            label="Email"
-            variant="standard"
-            onChange={handleChange}
-            value={emailText}
-          />
-          <TextField
             id="password"
             label="Password"
             variant="standard"
@@ -92,11 +110,18 @@ export const LoginRegister = () => {
           />
           <TextField
             id="cpassword"
-            label="Confirtm Password"
+            label="Confirm Password"
             variant="standard"
             type="password"
             onChange={handleChange}
             value={cpasswordText}
+          />
+          <TextField
+            id="location"
+            label="Location"
+            variant="standard"
+            onChange={handleChange}
+            value={location}
           />
           <Button onClick={register}>Register</Button>
           <Button onClick={handleRegistration}>Return</Button>
