@@ -23,14 +23,14 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', general_views.home, name='home'),
-    path('about/', general_views.about, name='about'),
-    path('register/', user_views.register, name='register'),
+    #path('', general_views.home, name='home'),
+    #path('about/', general_views.about, name='about'),
+    #path('register/', user_views.register, name='register'),
     path('weather/',weather_views.weather, name= 'weather'),
     
 
-    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
+    #path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
+    #path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
 
     path('rest-auth/', include('rest_auth.urls')),
     path('rest-auth/registration/', include('rest_auth.registration.urls')),

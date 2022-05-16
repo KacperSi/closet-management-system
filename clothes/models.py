@@ -57,7 +57,7 @@ class Garment(models.Model):
 class Collection(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, models.DO_NOTHING, default=1, verbose_name="User ID")
 	name = models.CharField(max_length=200, blank=False, default='', verbose_name="Collection name")
-	clothes = models.ManyToManyField(Garment)
+	clothes = models.ManyToManyField(Garment, blank=True)
 
 
 	def __str__(self):

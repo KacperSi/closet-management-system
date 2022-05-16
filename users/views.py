@@ -16,17 +16,17 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-def register(request):
-    if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Your account has been created! You are now able to log in')
-            return redirect('login')
-    else:
-        form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
+#def register(request):
+#    if request.method == 'POST':
+#        form = UserRegisterForm(request.POST)
+#        if form.is_valid():
+#            form.save()
+#            username = form.cleaned_data.get('username')
+#            messages.success(request, f'Your account has been created! You are now able to log in')
+#            return redirect('login')
+#    else:
+#        form = UserRegisterForm()
+#    return render(request, 'users/register.html', {'form': form})
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()

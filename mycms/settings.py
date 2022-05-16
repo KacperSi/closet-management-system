@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'rest_auth.registration',
     'multiselectfield',
-    'weather.apps.weatherConfig'
+    'weather.apps.weatherConfig',
+    'django_extensions',
 ]
 
 SITE_ID = 1
@@ -127,11 +128,11 @@ AUTH_USER_MODEL = 'users.CustomUser'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
+        #'rest_framework.authentication.BasicAuthentication',
         
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        'rest_framework.permissions.IsAdminUser',
     ]
 }
 
@@ -166,7 +167,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK='bootstrap4'
 
 
-LOGIN_REDIRECT_URL = 'home' #do wywalenia razem z templejtami
+#LOGIN_REDIRECT_URL = 'home' #do wywalenia razem z templejtami
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

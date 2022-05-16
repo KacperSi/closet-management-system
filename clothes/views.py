@@ -58,13 +58,13 @@ class CollectionList(generics.ListCreateAPIView):
 		new_collection = Collection.objects.create(user_id=self.request.user.id, name=data['name'])
 
 		new_collection.save()
-
-		for cloth in data['clothes']:
-			cloth_obj = Garment.objects.get(id=cloth['id'])
-			if cloth_obj.user == self.request.user:
-				new_collection.clothes.add(cloth_obj)
-			else:
-				return Response('No permisson to that object', status=403)
+		if new_collection.clothes.all().count() > 0:
+			for cloth in data['clothes']:
+				cloth_obj = Garment.objects.get(id=cloth['id'])
+				if cloth_obj.user == self.request.user:
+					new_collection.clothes.add(cloth_obj)
+				else:
+					return Response('No permisson to that object', status=403)
 			
 
 		serializer = CollectionSerializer(new_collection)
